@@ -1,0 +1,99 @@
+// 该文件主要是负责定义全局的样式变量，设置到根节点上，供整个项目使用
+// 就是在element-plus的主题色和辅助色的定义
+// https://element-plus.org/zh-CN/component/color.html
+$colors: (
+    // 主题色 
+    primary: #409eff,
+    // 辅助色
+    success: #67c23a,
+    warning: #e6a23c,
+    danger: #f56c6c,
+    info: #909399
+);
+
+// 将颜色设置到根节点上
+:root {
+
+    // 根据颜色变量生成不同亮度的颜色
+    @each $val, $color in $colors {
+        // 生成主题颜色,原生css变量的定义方式
+        --ZH-color-#{$val}: #{$color};
+
+        // 生成不同亮度的颜色,按照element-plus的规则，偶数单独生成
+        @for $i from 1 through 4 {
+            // mix是sass的函数，用于混合两个颜色，第三个参数是混合的比例就是第一个颜色的比例
+            --ZH-color-#{$val}-light-#{2 * $i + 1}: #{mix(#fff, $color, ((2 * $i + 1) * 10 * 1%))};
+            // mix($color1, $color2, $weight: 50%)
+            // $color1: 第一个颜色。
+            // $color2: 第二个颜色。
+            // $weight: 一个可选参数，表示第一个颜色在混合中的比例。默认为 50%，即两个颜色各占一半。第二个颜色的比例是 100% 减去第一个颜色的比例。
+        }
+
+        // dark2 和 light8 因为不符合上面的规律，我们在下面单独来生成
+        --ZH-color-#{$val}-light-8: #{mix(#fff, $color, 80 * 1%)};
+        --ZH-color-#{$val}-dark-2: #{mix(#000, $color, 20 * 1%)};
+    }
+
+    // 接下来，还有一些其他的颜色变量
+    // 对应的是 ElementUI 里面的中性色,灰白
+    --ZH-color-white: #fff;
+    --ZH-color-black: #000;
+    --ZH-bg-color: #ffffff;
+    --ZH-bg-color-page: #f2f3f5;
+    --ZH-bg-color-overlay: #ffffff;
+    --ZH-text-color-primary: #303133;
+    --ZH-text-color-regular: #606266;
+    --ZH-text-color-secondary: #909399;
+    --ZH-text-color-placeholder: #a8abb2;
+    --ZH-text-color-disabled: #c0c4cc;
+    --ZH-border-color: #dcdfe6;
+    --ZH-border-color-light: #e4e7ed;
+    --ZH-border-color-lighter: #ebeef5;
+    --ZH-border-color-extra-light: #f2f6fc;
+    --ZH-border-color-dark: #d4d7de;
+    --ZH-border-color-darker: #cdd0d6;
+    --ZH-fill-color: #f0f2f5;
+    --ZH-fill-color-light: #f5f7fa;
+    --ZH-fill-color-lighter: #fafafa;
+    --ZH-fill-color-extra-light: #fafcff;
+    --ZH-fill-color-dark: #ebedf0;
+    --ZH-fill-color-darker: #e6e8eb;
+    --ZH-fill-color-blank: #ffffff;
+
+    // 和 border 相关的变量
+    --ZH-border-width: 1px;
+    --ZH-border-style: solid;
+    // 在使用上面的变量
+    --ZH-border-color-hover: var(--ZH-text-color-disabled);
+    --ZH-border: var(--ZH-border-width) var(--ZH-border-style) var(--ZH-border-color);
+    --ZH-border-radius-base: 4px;
+    --ZH-border-radius-small: 2px;
+    --ZH-border-radius-round: 20px;
+    --ZH-border-radius-circle: 100%;
+
+    // 和 font 相关的变量
+    --ZH-font-size-extra-large: 20px;
+    --ZH-font-size-large: 18px;
+    --ZH-font-size-medium: 16px;
+    --ZH-font-size-base: 14px;
+    --ZH-font-size-small: 13px;
+    --ZH-font-size-extra-small: 12px;
+    --ZH-font-family: 'Helvetica Neue',
+    Helvetica,
+    'PingFang SC',
+    'Hiragino Sans GB',
+    'Microsoft YaHei',
+    '\5fae\8f6f\96c5\9ed1',
+    Arial,
+    sans-serif;
+    --ZH-font-weight-primary: 500;
+
+    // 和 disabled 相关的变量
+    --ZH-disabled-bg-color: var(--ZH-fill-color-light);
+    --ZH-disabled-text-color: var(--ZH-text-color-placeholder);
+    --ZH-disabled-border-color: var(--ZH-border-color-light);
+
+    // 和 transition 过渡相关的变量
+    --ZH-transition-duration: 0.3s;
+    --ZH-transition-duration-fast: 0.2s;
+}

@@ -1,0 +1,91 @@
+// 覆盖浏览器的默认样式表
+// 这个文件负责重置样式
+
+body {
+    font-family: var(--ZH-font-family);
+    font-weight: 400;
+    font-size: var(--ZH-font-size-base);
+    color: var(--ZH-text-color-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: var(--ZH-color-primary);
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        color: var(--ZH-color-primary-light-3);
+    }
+
+    &:active {
+        color: var(--ZH-color-primary-dark-2);
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--ZH-text-color-regular);
+    font-weight: inherit;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+h1 {
+    font-size: calc(var(--ZH-font-size-base) + 6px);
+}
+
+h2 {
+    font-size: calc(var(--ZH-font-size-base) + 4px);
+}
+
+h3 {
+    font-size: calc(var(--ZH-font-size-base) + 2px);
+}
+
+h4,
+h5,
+h6,
+p {
+    font-size: inherit;
+}
+
+p {
+    line-height: 1.8;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+sup,
+sub {
+    font-size: calc(var(--ZH-font-size-base) - 1px);
+}
+
+small {
+    font-size: calc(var(--ZH-font-size-base) - 2px);
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid var(--ZH-border-color-lighter);
+}
