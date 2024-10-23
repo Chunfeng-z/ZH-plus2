@@ -1,3 +1,5 @@
+@use 'sass:color';
+// mix废弃了，使用sass的color模块
 // 该文件主要是负责定义全局的样式变量，设置到根节点上，供整个项目使用
 // 就是在element-plus的主题色和辅助色的定义
 // https://element-plus.org/zh-CN/component/color.html
@@ -11,6 +13,7 @@ $colors: (
     info: #909399
 );
 
+
 // 将颜色设置到根节点上
 :root {
 
@@ -22,7 +25,7 @@ $colors: (
         // 生成不同亮度的颜色,按照element-plus的规则，偶数单独生成
         @for $i from 1 through 4 {
             // mix是sass的函数，用于混合两个颜色，第三个参数是混合的比例就是第一个颜色的比例
-            --ZH-color-#{$val}-light-#{2 * $i + 1}: #{mix(#fff, $color, ((2 * $i + 1) * 10 * 1%))};
+            --ZH-color-#{$val}-light-#{2 * $i + 1}: #{color.mix(#fff, $color, ((2 * $i + 1) * 10 * 1%))};
             // mix($color1, $color2, $weight: 50%)
             // $color1: 第一个颜色。
             // $color2: 第二个颜色。
@@ -30,8 +33,8 @@ $colors: (
         }
 
         // dark2 和 light8 因为不符合上面的规律，我们在下面单独来生成
-        --ZH-color-#{$val}-light-8: #{mix(#fff, $color, 80 * 1%)};
-        --ZH-color-#{$val}-dark-2: #{mix(#000, $color, 20 * 1%)};
+        --ZH-color-#{$val}-light-8: #{color.mix(#fff, $color, 80 * 1%)};
+        --ZH-color-#{$val}-dark-2: #{color.mix(#000, $color, 20 * 1%)};
     }
 
     // 接下来，还有一些其他的颜色变量

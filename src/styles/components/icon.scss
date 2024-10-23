@@ -1,0 +1,21 @@
+.ZH-icon {
+    --ZH-icon-color: inherit; //表示该变量的值将继承父元素的颜色。
+    display: inline-flex; //使其在行内显示并使用弹性布局。这意味着元素会像文本一样在行内排列，但其子元素将采用弹性盒模型的布局。
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    fill: currentColor; // 设置 SVG 图标的填充颜色为 currentColor，即元素的文本颜色。这使得图标的颜色能够随父元素的颜色变化而变化。
+    color: var(--ZH-icon-color);
+    // 设置字体大小为继承自父元素，这样图标的大小与文本保持一致。
+    font-size: inherit;
+}
+
+// 需要让主题的样式在组件上生效
+@each $val in primary, info, success, warning, danger {
+
+    // 当你挂上 .ZH-icon--primary 类之后
+    // 你的 --ZH-icon-color 这个变量的值就会变成 var(--ZH-color-primary)
+    .ZH-icon--#{$val} {
+        --ZH-icon-color: var(--ZH-color-#{$val});
+    }
+}
