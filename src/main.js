@@ -29,9 +29,15 @@ const app = createApp(App)
 // 全局引入组件
 import Icon from './components/Icon/Icon.vue'
 import Button from './components/Button/Button.vue'
+import Card from './components/Card/Card.vue'
+import Dialog from './components/Dialog/Dialog.vue'
+import Pager from './components/Pager/Pager.vue'
 // 注册自定义组件
 app.component('ZH-Icon', Icon)
 app.component('ZH-Button', Button)
+app.component('ZH-Card', Card)
+app.component('ZH-Dialog', Dialog)
+app.component('ZH-Pager', Pager)
 
 app.use(router)
 
