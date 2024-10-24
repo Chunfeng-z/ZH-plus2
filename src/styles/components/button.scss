@@ -1,0 +1,144 @@
+// 首先针对样式类定义一系列的变量
+.ZH-button {
+    --ZH-button-font-weight: var(--ZH-font-weight-primary);
+    --ZH-button-border-color: var(--ZH-border-color);
+    --ZH-button-bg-color: var(--ZH-fill-color-blank);
+    --ZH-button-text-color: var(--ZH-text-color-regular);
+    --ZH-button-disabled-text-color: var(--ZH-disabled-text-color);
+    --ZH-button-disabled-bg-color: var(--ZH-fill-color-blank);
+    --ZH-button-disabled-border-color: var(--ZH-border-color-light);
+    --ZH-button-hover-text-color: var(--ZH-color-primary);
+    --ZH-button-hover-bg-color: var(--ZH-color-primary-light-9);
+    --ZH-button-hover-border-color: var(--ZH-color-primary-light-7);
+    --ZH-button-active-text-color: var(--ZH-button-hover-text-color);
+    --ZH-button-active-border-color: var(--ZH-color-primary);
+    --ZH-button-active-bg-color: var(--ZH-button-hover-bg-color);
+    --ZH-button-outline-color: var(--ZH-color-primary-light-5);
+    --ZH-button-active-color: var(--ZH-text-color-primary);
+}
+
+// 接下来再书写基本的样式
+.ZH-button {
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    height: 40px;
+    // 这个数据来自上面定义的变量，上面的变量的值有来自于vars.scss
+    background-color: var(--ZH-button-bg-color);
+    border: var(--ZH-border);
+    border-color: var(--ZH-button-border-color);
+    color: var(--ZH-button-text-color);
+    appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    transition: 0.1s;
+    font-weight: var(--ZH-button-font-weight);
+    user-select: none;
+    vertical-align: middle;
+    padding: 12px 20px;
+    font-size: var(--ZH-font-size-base);
+    border-radius: var(--ZH-border-radius-base);
+
+    &:hover,
+    &:focus {
+        color: var(--ZH-button-hover-text-color);
+        border-color: var(--ZH-button-hover-border-color);
+        background-color: var(--ZH-button-hover-bg-color);
+        outline: none;
+    }
+
+    &:active {
+        color: var(--ZH-button-active-text-color);
+        border-color: var(--ZH-button-active-border-color);
+        background-color: var(--ZH-button-active-bg-color);
+        outline: none;
+    }
+
+    // 第三个属性圆角的设置
+    &.is-round {
+        border-radius: var(--ZH-border-radius-round);
+    }
+
+    &.is-circle {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        padding: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    // 禁用相关的样式
+    &.is-disabled,
+    &.is-disabled:hover,
+    &.is-disabled:focus,
+    &[disabled],
+    &[disabled]:hover,
+    &[disabled]:focus {
+        color: var(--ZH-button-disabled-text-color);
+        cursor: not-allowed;
+        background-image: none;
+        background-color: var(--ZH-button-disabled-bg-color);
+        border-color: var(--ZH-button-disabled-border-color);
+    }
+
+    // 选择带有ZH-icon的class的元素后面的span元素
+    [class*='ZH-icon']+span {
+        margin-left: 6px;
+        position: relative;
+        bottom: 2px;
+    }
+}
+
+// 现在需要基于默认的样式，生成匹配主题的内容
+// 在组件中接受外界传入的props，通过遍历生成所有主题的样式，如果挂载上对应的样式
+// 样式生效自己直接修改上面样式变量的值，在组件中使用该样式变量的样式就会修改
+@each $val in primary, info, success, warning, danger {
+    .ZH-button--#{$val} {
+        --ZH-button-text-color: var(--ZH-color-white);
+        --ZH-button-bg-color: var(--ZH-color-#{$val});
+        --ZH-button-border-color: var(--ZH-color-#{$val});
+        --ZH-button-outline-color: var(--ZH-color-#{$val}-light-5);
+        --ZH-button-active-color: var(--ZH-color-#{$val}-dark-2);
+        --ZH-button-hover-text-color: var(--ZH-color-white);
+        --ZH-button-hover-bg-color: var(--ZH-color-#{$val}-light-3);
+        --ZH-button-hover-border-color: var(--ZH-color-#{$val}-light-3);
+        --ZH-button-active-bg-color: var(--ZH-color-#{$val}-dark-2);
+        --ZH-button-active-border-color: var(--ZH-color-#{$val}-dark-2);
+        --ZH-button-disabled-text-color: var(--ZH-color-white);
+        --ZH-button-disabled-bg-color: var(--ZH-color-#{$val}-light-5);
+        --ZH-button-disabled-border-color: var(--ZH-color-#{$val}-light-5);
+    }
+
+    // plain是针对与当前主题的plain，所以也需要在这个循环中设置,组合选择器
+    .ZH-button--#{$val}.is-plain {
+        --ZH-button-text-color: var(--ZH-color-#{$val});
+        --ZH-button-bg-color: var(--ZH-color-#{$val}-light-9);
+        --ZH-button-border-color: var(--ZH-color-#{$val}-light-5);
+        --ZH-button-hover-text-color: var(--ZH-color-white);
+        --ZH-button-hover-bg-color: var(--ZH-color-#{$val});
+        --ZH-button-hover-border-color: var(--ZH-color-#{$val});
+        --ZH-button-active-text-color: var(--ZH-color-white);
+    }
+}
+
+// 不同大小的按钮,之前是默认大小的现在只需要设置small和large的大小
+.ZH-button--large {
+    --ZH-button-size: 50px;
+    height: var(--ZH-button-size);
+    padding: 12px 19px;
+    font-size: var(--ZH-font-size-base);
+    border-radius: var(--ZH-border-radius-base);
+}
+
+.ZH-button--small {
+    --ZH-button-size: 24px;
+    height: var(--ZH-button-size);
+    padding: 5px 11px;
+    font-size: 12px;
+    border-radius: calc(var(--ZH-border-radius-base) - 1px);
+}

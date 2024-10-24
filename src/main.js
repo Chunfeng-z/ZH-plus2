@@ -28,8 +28,10 @@ library.add(fas)
 const app = createApp(App)
 // 全局引入组件
 import Icon from './components/Icon/Icon.vue'
+import Button from './components/Button/Button.vue'
 // 注册自定义组件
 app.component('ZH-Icon', Icon)
+app.component('ZH-Button', Button)
 
 app.use(router)
 
