@@ -40,7 +40,7 @@
 <script setup>
 import propObj from './props'
 defineOptions({
-  name: 'ZH-Dialog',
+  name: 'ZHDialog',
 })
 defineProps(propObj)
 // 子组件向父组件传递信息，父组件在子组件上绑定事件，子组件触发事件

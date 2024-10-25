@@ -27,7 +27,7 @@
 <script setup>
 import propObj from './props'
 defineOptions({
-  name: 'ZH-Card',
+  name: 'ZHCard',
 })
 defineProps(propObj)
 </script>

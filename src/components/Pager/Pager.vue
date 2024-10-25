@@ -60,7 +60,7 @@ import propObj from './props'
 import { ref, computed } from 'vue'
 const props = defineProps(propObj)
 defineOptions({
-  name: 'ZH-Pager',
+  name: 'ZHPager',
 })
 const pager = computed(() => {
   // 数组存储需要渲染的页码

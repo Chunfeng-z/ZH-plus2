@@ -41,7 +41,7 @@ import propObj from './props'
 import { ref } from 'vue'
 import RenderVNode from '../Common/RenderVnode'
 defineOptions({
-  name: 'ZH-Dropdown',
+  name: 'ZHDropdown',
 })
 const props = defineProps(propObj)
 const emit = defineEmits(['select', 'visible-change'])

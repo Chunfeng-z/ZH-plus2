@@ -12,7 +12,7 @@
   "files": [
     "dist"
   ],
-  "module": "dist/em/ZH-plus.js",
+  "module": "dist/es/ZH-plus.js",
   "main": "dist/umd/ZH-plus.umd.cjs",
   "exports": {
     ".": {

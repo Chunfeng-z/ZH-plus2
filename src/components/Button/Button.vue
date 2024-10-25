@@ -27,7 +27,7 @@ import propObj from './props'
 import { ref } from 'vue'
 const _ref = ref(null)
 defineOptions({
-  name: 'ZH-Button',
+  name: 'ZHButton',
 })
 defineProps(propObj)
 // 将refBtn暴露出去

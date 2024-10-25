@@ -38,7 +38,7 @@
 import { inject, computed } from 'vue'
 import { collapseItemProps, collapseContextKey } from './props'
 defineOptions({
-  name: 'Duyi-CollapseItem',
+  name: 'ZHCollapseItem',
 })
 
 // 通过 inject 可以拿到 Collapse 组件提供的方法

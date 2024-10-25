@@ -8,7 +8,7 @@
 import { ref, provide } from 'vue'
 import { collapseProps, collapseContextKey } from './props'
 defineOptions({
-  name: 'ZH-Collapse',
+  name: 'ZHCollapse',
 })
 
 // 触发事件因为v-model实际上就是语法糖本身是update:modelValue,同时也需要执行用户本身的change事件

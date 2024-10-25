@@ -22,7 +22,7 @@ import { createPopper } from '@popperjs/core'
 import propObj from './props'
 import { debounce } from 'lodash-es'
 defineOptions({
-  name: 'ZH-Tooltip',
+  name: 'ZHTooltip',
 })
 const props = defineProps(propObj)
 

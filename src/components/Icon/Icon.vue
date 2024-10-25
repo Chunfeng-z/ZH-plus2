@@ -12,7 +12,7 @@ import { computed } from 'vue'
 import { omit } from 'lodash-es'
 // 定义组件的配置
 defineOptions({
-  name: 'ZH-Icon',
+  name: 'ZHIcon',
 })
 // 定义组件的属性
 const props = defineProps(propObj)
