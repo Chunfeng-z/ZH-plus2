@@ -1,14 +1,38 @@
 {
   "name": "zh-plus2",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "this is a vue3 component library",
   "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "vue3",
+    "components",
+    "library"
+  ],
+  "files": [
+    "dist"
+  ],
+  "module": "dist/em/ZH-plus.js",
+  "main": "dist/umd/ZH-plus.umd.cjs",
+  "exports": {
+    ".": {
+      "import": "./dist/es/ZH-plus.js",
+      "require": "./dist/umd/ZH-plus.umd.cjs"
+    },
+    "./style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/umd/style.css"
+    }
+  },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run build-es && npm run build-umd && npm run move-style",
     "preview": "vite preview",
+    "build-es": "vite build --config vite.es.config.js",
+    "build-umd": "vite build --config vite.umd.config.js",
     "lint": "eslint . --fix",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "move-style": "move-file dist/es/style.css dist/style.css"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
@@ -16,8 +40,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "@popperjs/core": "^2.11.8",
     "lodash-es": "^4.17.21",
-    "vue": "^3.5.12",
-    "vue-router": "^4.4.5"
+    "move-file-cli": "^3.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
@@ -27,6 +50,11 @@
     "eslint-plugin-vue": "^9.29.0",
     "prettier": "^3.3.3",
     "sass": "^1.80.3",
-    "vite": "^5.4.8"
+    "vite": "^5.4.8",
+    "vue": "^3.5.12",
+    "vue-router": "^4.4.5"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.4"
   }
 }

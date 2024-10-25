@@ -35,6 +35,7 @@ import Pager from './components/Pager/Pager.vue'
 import Collapse from './components/Collapse/Collapse.vue'
 import CollapseItem from './components/Collapse/CollapseItem.vue'
 import Tooltip from './components/Tooltip/Tooltip.vue'
+import Dropdown from './components/Dropdown/Dropdown.vue'
 // 注册自定义组件
 app.component('ZH-Icon', Icon)
 app.component('ZH-Button', Button)
@@ -44,6 +45,7 @@ app.component('ZH-Pager', Pager)
 app.component('ZH-Collapse', Collapse)
 app.component('ZH-CollapseItem', CollapseItem)
 app.component('ZH-Tooltip', Tooltip)
+app.component('ZH-Dropdown', Dropdown)
 app.use(router)
 
 // 注册font-awesome-icon组件
