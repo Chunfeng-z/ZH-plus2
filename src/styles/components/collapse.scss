@@ -1,0 +1,64 @@
+.ZH-collapse {
+    --ZH-collapse-border-color: var(--ZH-border-color-light);
+    --ZH-collapse-header-height: 48px;
+    --ZH-collapse-header-bg-color: var(--ZH-fill-color-blank);
+    --ZH-collapse-header-text-color: var(--ZH-text-color-primary);
+    --ZH-collapse-header-font-size: 13px;
+    --ZH-collapse-content-bg-color: var(--ZH-fill-color-blank);
+    --ZH-collapse-content-font-size: 13px;
+    --ZH-collapse-content-text-color: var(--ZH-text-color-primary);
+    --ZH-collapse-disabled-text-color: var(--ZH-disabled-text-color);
+    --ZH-collapse-disabled-border-color: var(--ZH-border-color-lighter);
+    border-top: 1px solid var(--ZH-collapse-border-color);
+    width: 100%;
+}
+
+.ZH-collapse-item__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--ZH-collapse-header-height);
+    line-height: var(--ZH-collapse-header-height);
+    background-color: var(--ZH-collapse-header-bg-color);
+    color: var(--ZH-collapse-header-text-color);
+    cursor: pointer;
+    font-size: var(--ZH-collapse-header-font-size);
+    font-weight: 500;
+    transition: border-bottom-color var(--ZH-transition-duration);
+    outline: none;
+    border-bottom: 1px solid var(--ZH-collapse-border-color);
+
+    &.is-disabled {
+        color: var(--ZH-collapse-disabled-text-color);
+        cursor: not-allowed;
+        background-image: none;
+    }
+
+    &.is-active {
+        border-bottom-color: transparent;
+
+        .header-angle {
+            transform: rotate(90deg);
+        }
+    }
+
+    .header-angle {
+        transition: transform var(--ZH-transition-duration);
+    }
+}
+
+.ZH-collapse-item__content {
+    will-change: height;
+    background-color: var(--ZH-collapse-content-bg-color);
+    overflow: hidden;
+    box-sizing: border-box;
+    font-size: var(--ZH-collapse-content-font-size);
+    color: var(--ZH-collapse-content-text-color);
+    border-bottom: 1px solid var(--ZH-collapse-border-color);
+    padding-bottom: 25px;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+    transition: height var(--ZH-transition-duration);
+}
